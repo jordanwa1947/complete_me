@@ -31,13 +31,18 @@ class CompleteMe
       add_node(new_word, child_node) 
     else 
       child_node.complete_word = true
-      binding.pry
     end
   end
+
+  def populate(dictionary)
+    array = dictionary.split("\n")
+    array.each do |word|
+      insert(word)
+    end
+  end
+  
 end
 
 complete_me = CompleteMe.new
-complete_me.insert("pizza")
-complete_me.insert("pop")
-complete_me.insert("poop")
-complete_me.insert("other")
+dictionary = File.read("/usr/share/dict/words")
+complete_me.populate(dictionary)
