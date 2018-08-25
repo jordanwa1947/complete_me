@@ -20,8 +20,12 @@ class CompleteMe
 
   def add_node(word, parent_node)
     child_char = word.first
-    child_node = Node.new(child_char)
-    parent_node.children[child_char] = child_node
+    if !parent_node.children[child_char]
+      child_node = Node.new(child_char)
+      parent_node.children[child_char] = child_node
+    else
+      child_node = parent_node.children[child_char]
+    end
     new_word = word.drop(1)
     if new_word.length > 0
       add_node(new_word, child_node) 
@@ -34,4 +38,6 @@ end
 
 complete_me = CompleteMe.new
 complete_me.insert("pizza")
-# complete_me.add_node('pizza'.split(''), complete_me.root)
+complete_me.insert("pop")
+complete_me.insert("poop")
+complete_me.insert("other")
