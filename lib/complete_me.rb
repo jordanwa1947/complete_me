@@ -9,9 +9,9 @@ class CompleteMe
   end
 
   def insert(word)
+    @word_count += 1
     word_array = word.split('')
     add_node(word_array, @root)
-    @word_count += 1
   end
 
   def count
@@ -28,8 +28,8 @@ class CompleteMe
     end
     new_word = word.drop(1)
     if new_word.length > 0
-      add_node(new_word, child_node) 
-    else 
+      add_node(new_word, child_node)
+    else
       child_node.complete_word = true
     end
   end
@@ -40,9 +40,9 @@ class CompleteMe
       insert(word)
     end
   end
-  
+
 end
 
-complete_me = CompleteMe.new
-dictionary = File.read("/usr/share/dict/words")
-complete_me.populate(dictionary)
+# complete_me = CompleteMe.new
+# dictionary = File.read("/usr/share/dict/words")
+# complete_me.populate(dictionary)

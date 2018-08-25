@@ -16,4 +16,7 @@ class NodeTest < Minitest::Test
     refute node.complete_word
     assert_equal nil, node.value
   end
+
+
+
 end
