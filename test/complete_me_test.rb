@@ -5,38 +5,38 @@ require './lib/node'
 class CompleteMeTest < Minitest::Test
 
   def test_that_the_complete_me_class_exists
-    complete_me = CompleteMe.new
+    completion = CompleteMe.new
 
-    assert_instance_of CompleteMe, complete_me
+    assert_instance_of CompleteMe, completion
   end
 
   def test_it_can_count
-    complete_me = CompleteMe.new
-    complete_me.insert('pizza')
-    complete_me.insert('hello')
+    completion = CompleteMe.new
+    completion.insert('pizza')
+    completion.insert('hello')
 
-    assert_equal 2, complete_me.count
+    assert_equal 2, completion.count
   end
 
   def test_it_can_create_root_node
-    complete_me = CompleteMe.new
+    completion = CompleteMe.new
 
-    assert_equal ({}), complete_me.root.children
-    assert_instance_of Node, complete_me.root
+    assert_equal ({}), completion.root.children
+    assert_instance_of Node, completion.root
   end
 
   def test_it_can_add_single_character
-    complete_me = CompleteMe.new
-    complete_me.insert("s")
+    completion = CompleteMe.new
+    completion.insert("s")
 
-    assert_equal "s", complete_me.root.children["s"].value
+    assert_equal "s", completion.root.children["s"].value
   end
 
   def test_it_can_add_a_single_word
-    complete_me = CompleteMe.new
-    complete_me.insert('pizza')
+    completion = CompleteMe.new
+    completion.insert('pizza')
 
-    p_node = complete_me.root.children["p"]
+    p_node = completion.root.children["p"]
     i_node = p_node.children["i"]
     z_node = i_node.children["z"]
     z_two_node = z_node.children["z"]
@@ -51,21 +51,21 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_populate
-    complete_me = CompleteMe.new
+    completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
-    complete_me.populate(dictionary)
+    completion.populate(dictionary)
 
-    assert_equal 235886, complete_me.count
+    assert_equal 235886, completion.count
   end
 
   def test_it_can_generate_suggestions
 
-    complete_me = CompleteMe.new
+    completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
-    complete_me.populate(dictionary)
+    completion.populate(dictionary)
     
     expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
 
-    assert_equal expected, complete_me.suggest("piz")
+    assert_equal expected, completion.suggest("piz")
  end
 end
