@@ -44,8 +44,10 @@ class CompleteMe
   def suggest(prefix)
     prefix_array = prefix.split("")
     target_node = traverse(prefix_array, @root)
-    suggestion_hash = build(prefix, target_node, {})
-    sort_suggestions(suggestion_hash)
+    suggestion_hash = build(prefix, prefix, target_node, {})
+    clean_hash = clean_suggestions(suggestion_hash)
+    sorted_hash = sort_suggestions(clean_hash)
+    trim(sorted_hash)
   end
 
   def traverse(prefix, node)
@@ -59,16 +61,16 @@ class CompleteMe
     end
   end
 
-  def build(prefix, node, suggestions)
+  def build(original_prefix, prefix, node, suggestions)
     if node.complete_word
-      suggestions[prefix] = node.word_score
+      suggestions[prefix] = node.word_score[original_prefix]
     end
     children = node.children.keys
     if !children.empty?
       children.each do |child|
         new_prefix = prefix + child
         pending_node = node.children[child]
-        build(new_prefix, pending_node, suggestions)
+        build(original_prefix, new_prefix, pending_node, suggestions)
       end
     end
     return suggestions
@@ -78,14 +80,35 @@ class CompleteMe
     selection_array = selection.split('')
     final_node = traverse(selection_array, @root)
     if final_node.complete_word
-      final_node.word_score += 1
+      if final_node.word_score.keys.include?(prefix)
+        final_node.word_score[prefix] += 1
+      else
+        final_node.word_score[prefix] = 1
+      end
     else
       puts "selection is not a word"
     end
   end
 
-  def sort_suggestions(hash)
-    sorted_hash = hash.sort_by { |word, weight| weight * -1 }
+  def clean_suggestions(params)
+    params.keys.each do |word|
+      if params[word] == nil
+        params[word] = 0
+      end
+    end
+    params
+  end
+
+  def sort_suggestions(params)
+    sorted_hash = params.sort_by { |word, weight| weight * -1 }
     sorted_array = sorted_hash.to_h.keys
+  end
+
+  def trim(params)
+    if params.length > 5
+      params.take(5)
+    else
+      params
+    end
   end
 end

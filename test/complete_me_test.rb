@@ -66,17 +66,37 @@ class CompleteMeTest < Minitest::Test
     expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
 
     assert_equal expected, completion.suggest("piz")
- end
+  end
 
- def test_that_it_can_select_a_word
-   completion = CompleteMe.new
-   dictionary = File.read("/usr/share/dict/words")
-   completion.populate(dictionary)
-   completion.suggest('piz')
-   completion.select("piz", "pizzeria")
-   expected = ["pizzeria", "pize", "pizza", "pizzicato", "pizzle"]
+  def test_that_it_can_suggest_based_on_word_score
+    completion = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    completion.populate(dictionary)
+    completion.suggest('piz')
+    completion.select("piz", "pizzeria")
+    expected = ["pizzeria", "pize", "pizza", "pizzicato", "pizzle"]
 
-   assert_equal expected, completion.suggest('piz')
- end
+    assert_equal expected, completion.suggest('piz')
+  end
+
+  def test_that_it_can_suggest_based_on_prefix_score_combination
+    completion = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    completion.populate(dictionary)
+
+    completion.select("piz", "pizzeria")
+    completion.select("piz", "pizzeria")
+    completion.select("piz", "pizzeria")
+
+    completion.select("pi", "pizza")
+    completion.select("pi", "pizza")
+    completion.select("pi", "pizzicato")
+
+    expected = ["pizzeria", "pize", "pizza", "pizzicato", "pizzle"]
+    assert_equal expected, completion.suggest('piz')
+
+    expected = ["pizza", "pizzicato", "piaba", "piacaba", "piacle"]
+    assert_equal expected, completion.suggest('pi')
+  end
 
 end

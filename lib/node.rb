@@ -7,6 +7,6 @@ class Node
     @complete_word = false
     @children = {}
     @value = value
-    @word_score = 0
+    @word_score = {}
   end
 end
