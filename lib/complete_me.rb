@@ -44,34 +44,33 @@ class CompleteMe
   def suggest(prefix)
     prefix_array = prefix.split("")
     target_node = traverse(prefix_array, @root)
-    build(prefix, target_node)
+    build(prefix, target_node, [])
   end
-
+  
   def traverse(prefix, node)
     current_letter = prefix.first
-    if node.children
-      new_node = node.children[current_letter]
-    end
+    new_node = node.children[current_letter]
     next_prefix = prefix.drop(1)
     if next_prefix.length > 0
       traverse(next_prefix, new_node)
     else
-      return node
+      return new_node
     end
   end
-
-  def build(prefix, node)
-    suggestions = []
+  
+  def build(prefix, node, suggestions)
+    if node.complete_word
+      suggestions << prefix
+    end
     children = node.children.keys
     if !children.empty?
       children.each do |child|
+        new_prefix = prefix + child
         pending_node = node.children[child]
-        if pending_node.complete_word == true
-          suggestions << prefix + child
-        end
-        build(prefix + child, pending_node)
+        build(new_prefix, pending_node, suggestions)
       end
     end
     return suggestions
   end
+  
 end
