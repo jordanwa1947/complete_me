@@ -49,4 +49,23 @@ class CompleteMeTest < Minitest::Test
     assert_equal "a", a_node.value
     assert a_node.complete_word
   end
+
+  def test_it_can_populate
+    complete_me = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    complete_me.populate(dictionary)
+
+    assert_equal 235886, complete_me.count
+  end
+
+  def test_it_can_generate_suggestions
+
+    complete_me = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    complete_me.populate(dictionary)
+    
+    expected = ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
+
+    assert_equal expected, complete_me.suggest("piz")
+ end
 end

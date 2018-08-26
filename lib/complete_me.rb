@@ -41,8 +41,37 @@ class CompleteMe
     end
   end
 
-end
+  def suggest(prefix)
+    prefix_array = prefix.split("")
+    target_node = traverse(prefix_array, @root)
+    build(prefix, target_node)
+  end
 
-# complete_me = CompleteMe.new
-# dictionary = File.read("/usr/share/dict/words")
-# complete_me.populate(dictionary)
+  def traverse(prefix, node)
+    current_letter = prefix.first
+    if node.children
+      new_node = node.children[current_letter]
+    end
+    next_prefix = prefix.drop(1)
+    if next_prefix.length > 0
+      traverse(next_prefix, new_node)
+    else
+      return node
+    end
+  end
+
+  def build(prefix, node)
+    suggestions = []
+    children = node.children.keys
+    if !children.empty?
+      children.each do |child|
+        pending_node = node.children[child]
+        if pending_node.complete_word == true
+          suggestions << prefix + child
+        end
+        build(prefix + child, pending_node)
+      end
+    end
+    return suggestions
+  end
+end
