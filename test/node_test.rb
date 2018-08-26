@@ -2,7 +2,6 @@ require './test/helper_test'
 require './lib/node'
 
 class NodeTest < Minitest::Test
-
   def test_that_the_node_class_exists
     node = Node.new
 
@@ -14,6 +13,6 @@ class NodeTest < Minitest::Test
 
     assert_equal ({}), node.children
     refute node.complete_word
-    assert_equal nil, node.value
+    assert_nil node.value
   end
 end
