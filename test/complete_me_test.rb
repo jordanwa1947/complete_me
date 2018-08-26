@@ -51,7 +51,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_populate
-    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -60,7 +59,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_generate_suggestions
-    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -77,7 +75,7 @@ class CompleteMeTest < Minitest::Test
    completion.suggest('piz')
    completion.select("piz", "pizzeria")
    expected = ["pizzeria", "pize", "pizza", "pizzicato", "pizzle"]
-   
+
    assert_equal expected, completion.suggest('piz')
  end
 

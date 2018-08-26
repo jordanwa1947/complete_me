@@ -44,7 +44,8 @@ class CompleteMe
   def suggest(prefix)
     prefix_array = prefix.split("")
     target_node = traverse(prefix_array, @root)
-    build(prefix, target_node, [])
+    suggestion_hash = build(prefix, target_node, {})
+    sort_suggestions(suggestion_hash)
   end
 
   def traverse(prefix, node)
@@ -60,7 +61,7 @@ class CompleteMe
 
   def build(prefix, node, suggestions)
     if node.complete_word
-      suggestions << prefix
+      suggestions[prefix] = node.word_score
     end
     children = node.children.keys
     if !children.empty?
@@ -78,9 +79,13 @@ class CompleteMe
     final_node = traverse(selection_array, @root)
     if final_node.complete_word
       final_node.word_score += 1
-      binding.pry
     else
       puts "selection is not a word"
     end
+  end
+
+  def sort_suggestions(hash)
+    sorted_hash = hash.sort_by { |word, weight| weight * -1 }
+    sorted_array = sorted_hash.to_h.keys
   end
 end
