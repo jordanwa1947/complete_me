@@ -46,7 +46,7 @@ class CompleteMe
     target_node = traverse(prefix_array, @root)
     build(prefix, target_node, [])
   end
-  
+
   def traverse(prefix, node)
     current_letter = prefix.first
     new_node = node.children[current_letter]
@@ -57,7 +57,7 @@ class CompleteMe
       return new_node
     end
   end
-  
+
   def build(prefix, node, suggestions)
     if node.complete_word
       suggestions << prefix
@@ -72,5 +72,15 @@ class CompleteMe
     end
     return suggestions
   end
-  
+
+  def select(prefix, selection)
+    selection_array = selection.split('')
+    final_node = traverse(selection_array, @root)
+    if final_node.complete_word
+      final_node.word_score += 1
+      binding.pry
+    else
+      puts "selection is not a word"
+    end
+  end
 end
