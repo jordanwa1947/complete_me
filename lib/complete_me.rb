@@ -37,7 +37,6 @@ class CompleteMe
   def populate(dictionary)
     array = dictionary.split("\n")
     array.each do |word|
-      binding.pry
       insert(word)
     end
   end

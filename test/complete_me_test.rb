@@ -55,7 +55,7 @@ class CompleteMeTest < Minitest::Test
     assert a_node.complete_word
   end
 
-  def test_it_can_populate
+  def test_it_can_populate_words
     skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
@@ -64,7 +64,7 @@ class CompleteMeTest < Minitest::Test
     assert_equal 235886, completion.count
   end
 
-  def test_it_can_generate_suggestions
+  def test_it_can_suggest_words
     skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
@@ -128,6 +128,7 @@ class CompleteMeTest < Minitest::Test
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
 
+# add assertion
 
   end
 
@@ -160,10 +161,12 @@ class CompleteMeTest < Minitest::Test
 
   def test_it_can_populate_addresses
     completion = CompleteMe.new
-    addresses = File.read("/data/addresses")
+    relative_path = "./data/addresses"
+    absolute_path = File.expand_path(relative_path)
+    addresses = File.read(absolute_path)
     completion.populate(addresses)
 
-    assert_equal 313494, completion.count
+    assert_equal 313493, completion.count
   end
 
 end
