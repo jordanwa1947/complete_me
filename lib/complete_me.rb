@@ -111,4 +111,22 @@ class CompleteMe
       params
     end
   end
+
+  def delete_word(word)
+    word_array = word.split('')
+    final_node = traverse(word_array, @root)
+    final_node.complete_word = false
+  end
+
+  # def traverse_deleted_word(word, prefix, node)
+  #   prefix << word.first
+  #   word = word.shift
+  #   node = traverse(prefix, node)
+  #   if node.children.values.length > 1
+  #     child_node = node.children[word[0]]
+  #     traverse_deleted_word(word, prefix, child_node)
+  #   else node.children.values.length == 1
+  #     node.complete_word = false
+  #   end
+  # end
 end

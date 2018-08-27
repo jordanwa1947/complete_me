@@ -1,7 +1,7 @@
 class Node
-  attr_reader :children, :value
+  attr_reader :value
 
-  attr_accessor :complete_word, :word_score
+  attr_accessor :complete_word, :word_score, :children
 
   def initialize(value = nil)
     @complete_word = false
