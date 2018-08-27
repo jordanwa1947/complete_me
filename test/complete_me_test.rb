@@ -105,15 +105,20 @@ class CompleteMeTest < Minitest::Test
 
   def test_it_deletes_a_word
     completion = CompleteMe.new
-    dictionary = "pizza\npizzicato\npiaba\npiacaba\npiacle"
+    dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
 
-    expected = ["pizza", "pizzicato", "piaba", "piacaba", "piacle"]
-    assert_equal = expected, completion.suggest('pi')
+    expected = ["try", "trying", "tryout"]
+    assert_equal = expected, completion.suggest('try')
 
-    completion.delete_word('pizzicato')
+    completion.delete_word('trying')
 
-    expected = ["pizza", "piaba", "piacaba", "piacle"]
-    assert_equal expected, completion.suggest('pi')
+    expected = ["try", "tryout"]
+    assert_equal expected, completion.suggest('try')
+
+    completion.delete_word('try')
+
+    expected = ["tryout"]
+    assert_equal expected, completion.suggest('try')
   end
 end

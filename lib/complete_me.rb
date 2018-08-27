@@ -120,7 +120,7 @@ class CompleteMe
       traverse_deleted_word(word_array)
     end
   end
-
+  
   def traverse_deleted_word(word)
     child_node = traverse(word, @root)
     parent_node = traverse(word[0...-1], @root)
