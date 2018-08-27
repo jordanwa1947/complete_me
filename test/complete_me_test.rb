@@ -144,4 +144,13 @@ class CompleteMeTest < Minitest::Test
     expected = ["tryout"]
     assert_equal expected, completion.suggest('try')
   end
+
+  def test_it_can_populate_addresses
+    completion = CompleteMe.new
+    addresses = ("/data/addresses.csv")
+    completion.populate(addresses)
+
+    assert_equal , completion.count
+  end
+
 end

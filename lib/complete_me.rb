@@ -140,5 +140,4 @@ class CompleteMe
       parent_node.children.delete(child_node.value)
     end
   end
-
 end
