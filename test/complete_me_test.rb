@@ -204,4 +204,35 @@ class CompleteMeTest < Minitest::Test
     assert_equal expected, completion.suggest("1234")
   end
 
+    def test_that_it_can_suggest_based_on_prefix_score_combination
+    completion = CompleteMe.new
+    relative_path = "./data/addresses"
+    absolute_path = File.expand_path(relative_path)
+    addresses = File.read(absolute_path)
+    completion.populate(addresses)
+
+    completion.select("1234", "1234 E Colfax Ave")
+    completion.select("1234", "1234 E Colfax Ave")
+    completion.select("1234", "1234 E Colfax Ave")
+    completion.suggest("1234")
+
+    completion.select("123", "1234 E 22nd Ave")
+    completion.select("123", "1234 E 22nd Ave")
+    completion.select("123", "1234 E 28th Ave")
+
+    expected = ["1234 E Colfax Ave", 
+      "1234 E 22nd Ave", 
+      "1234 E 28th Ave", 
+      "1234 E Colfax Ave Ste 201", 
+      "1234 E Colfax Ave Ste 202"]
+    assert_equal expected, completion.suggest('1234')
+
+    expected = ["1234 E 22nd Ave", 
+      "1234 E 28th Ave", 
+      "12300 E 55th Ave", 
+      "12300 E 39th Ave", 
+      "12300 E 48th Ave"]
+    assert_equal expected, completion.suggest('123')
+  end
+
 end
