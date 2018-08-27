@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.10.2/application.js' type='text/javascript'></script>    
     <link href='./assets/0.10.2/application.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="./assets/0.10.2/favicon_red.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.10.2/favicon_green.png" />
     <link rel="icon" type="image/png" href="./assets/0.10.2/favicon.png" />
   </head>
   
@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-08-27T11:37:57-06:00">2018-08-27T11:37:57-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-08-27T14:57:30-06:00">2018-08-27T14:57:30-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">30.61%</span></span>
+    (<span class="covered_percent"><span class="green">99.07%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="red">
-         0.27
+       <span class="green">
+         2588380.05
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>2</b> files in total.
-    <b>98</b> relevant lines. 
-    <span class="green"><b>30</b> lines covered</span> and
-    <span class="red"><b>68</b> lines missed </span>
+    <b>3</b> files in total.
+    <b>108</b> relevant lines. 
+    <span class="green"><b>107</b> lines covered</span> and
+    <span class="red"><b>1</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,12 +52,12 @@
       
       <tr>
         <td class="strong"><a href="#932cde0e15341d44e4d592028b6c2a8f6c8756bf" class="src_link" title="lib/complete_me.rb">lib/complete_me.rb</a></td>
-        <td class="red strong">24.44 %</td>
-        <td>144</td>
-        <td>90</td>
-        <td>22</td>
-        <td>68</td>
-        <td>0.2</td>
+        <td class="green strong">98.88 %</td>
+        <td>143</td>
+        <td>89</td>
+        <td>88</td>
+        <td>1</td>
+        <td>2594339.8</td>
       </tr>
       
       <tr>
@@ -66,6 +66,16 @@
         <td>12</td>
         <td>8</td>
         <td>8</td>
+        <td>0</td>
+        <td>6081099.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#1fe41cb89e3f3ae11ad46cffdc7e470636ac3713" class="src_link" title="test/node_test.rb">test/node_test.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>18</td>
+        <td>11</td>
+        <td>11</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -89,11 +99,11 @@
         <div class="source_table" id="932cde0e15341d44e4d592028b6c2a8f6c8756bf">
   <div class="header">
     <h3>lib/complete_me.rb</h3>
-    <h4><span class="red">24.44 %</span> covered</h4>
+    <h4><span class="green">98.88 %</span> covered</h4>
     <div>
-      <b>90</b> relevant lines. 
-      <span class="green"><b>22</b> lines covered</span> and
-      <span class="red"><b>68</b> lines missed.</span>
+      <b>89</b> relevant lines. 
+      <span class="green"><b>88</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -136,14 +146,14 @@
           <code class="ruby">  def initialize</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="16" data-linenumber="7">
+          <span class="hits">16</span>
           
           <code class="ruby">    @word_count = 0</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="16" data-linenumber="8">
+          <span class="hits">16</span>
           
           <code class="ruby">    @root = Node.new</code>
         </li>
@@ -166,20 +176,20 @@
           <code class="ruby">  def insert(word)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="12">
-          
+        <li class="covered" data-hits="2039253" data-linenumber="12">
+          <span class="hits">2039253</span>
           
           <code class="ruby">    @word_count += 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="13">
-          
+        <li class="covered" data-hits="2039253" data-linenumber="13">
+          <span class="hits">2039253</span>
           
           <code class="ruby">    word_array = word.split(&#39;&#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="14">
-          
+        <li class="covered" data-hits="2039253" data-linenumber="14">
+          <span class="hits">2039253</span>
           
           <code class="ruby">    add_node(word_array, @root)</code>
         </li>
@@ -202,8 +212,8 @@
           <code class="ruby">  def count</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="18">
-          
+        <li class="covered" data-hits="3" data-linenumber="18">
+          <span class="hits">3</span>
           
           <code class="ruby">    @word_count</code>
         </li>
@@ -226,26 +236,26 @@
           <code class="ruby">  def add_node(word, parent_node)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="22">
-          
+        <li class="covered" data-hits="35082047" data-linenumber="22">
+          <span class="hits">35082047</span>
           
           <code class="ruby">    child_char = word.first</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
+        <li class="covered" data-hits="35082047" data-linenumber="23">
+          <span class="hits">35082047</span>
           
           <code class="ruby">    if !parent_node.children[child_char]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="24">
-          
+        <li class="covered" data-hits="12162179" data-linenumber="24">
+          <span class="hits">12162179</span>
           
           <code class="ruby">      child_node = Node.new(child_char)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="25">
-          
+        <li class="covered" data-hits="12162179" data-linenumber="25">
+          <span class="hits">12162179</span>
           
           <code class="ruby">      parent_node.children[child_char] = child_node</code>
         </li>
@@ -256,8 +266,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="27">
-          
+        <li class="covered" data-hits="22919868" data-linenumber="27">
+          <span class="hits">22919868</span>
           
           <code class="ruby">      child_node = parent_node.children[child_char]</code>
         </li>
@@ -268,20 +278,20 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="29">
-          
+        <li class="covered" data-hits="35082047" data-linenumber="29">
+          <span class="hits">35082047</span>
           
           <code class="ruby">    new_word = word.drop(1)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="30">
-          
+        <li class="covered" data-hits="35082047" data-linenumber="30">
+          <span class="hits">35082047</span>
           
           <code class="ruby">    if new_word.length &gt; 0</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="31">
-          
+        <li class="covered" data-hits="33042794" data-linenumber="31">
+          <span class="hits">33042794</span>
           
           <code class="ruby">      add_node(new_word, child_node)</code>
         </li>
@@ -292,8 +302,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="33">
-          
+        <li class="covered" data-hits="2039253" data-linenumber="33">
+          <span class="hits">2039253</span>
           
           <code class="ruby">      child_node.complete_word = true</code>
         </li>
@@ -322,643 +332,637 @@
           <code class="ruby">  def populate(dictionary)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="38">
-          
+        <li class="covered" data-hits="11" data-linenumber="38">
+          <span class="hits">11</span>
           
           <code class="ruby">    array = dictionary.split(&quot;\n&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="39">
-          
+        <li class="covered" data-hits="11" data-linenumber="39">
+          <span class="hits">11</span>
           
           <code class="ruby">    array.each do |word|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
-          
-          
-          <code class="ruby">      binding.pry</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="41">
-          
+        <li class="covered" data-hits="2039249" data-linenumber="40">
+          <span class="hits">2039249</span>
           
           <code class="ruby">      insert(word)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="44">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">  def suggest(prefix)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="46">
-          
+        <li class="covered" data-hits="12" data-linenumber="45">
+          <span class="hits">12</span>
           
           <code class="ruby">    prefix_array = prefix.split(&quot;&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="47">
-          
+        <li class="covered" data-hits="12" data-linenumber="46">
+          <span class="hits">12</span>
           
           <code class="ruby">    target_node = traverse(prefix_array, @root)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="48">
-          
+        <li class="covered" data-hits="12" data-linenumber="47">
+          <span class="hits">12</span>
           
           <code class="ruby">    suggestion_hash = build(prefix, prefix, target_node, {})</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="49">
-          
+        <li class="covered" data-hits="12" data-linenumber="48">
+          <span class="hits">12</span>
           
           <code class="ruby">    clean_hash = clean_suggestions(suggestion_hash)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="50">
-          
+        <li class="covered" data-hits="12" data-linenumber="49">
+          <span class="hits">12</span>
           
           <code class="ruby">    sorted_hash = sort_suggestions(clean_hash)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="51">
-          
+        <li class="covered" data-hits="12" data-linenumber="50">
+          <span class="hits">12</span>
           
           <code class="ruby">    trim(sorted_hash)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="53">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="54">
+        <li class="covered" data-hits="1" data-linenumber="53">
           <span class="hits">1</span>
           
           <code class="ruby">  def traverse(prefix, node)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="55">
-          
+        <li class="covered" data-hits="379" data-linenumber="54">
+          <span class="hits">379</span>
           
           <code class="ruby">    current_letter = prefix.first</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="56">
-          
+        <li class="covered" data-hits="379" data-linenumber="55">
+          <span class="hits">379</span>
           
           <code class="ruby">    new_node = node.children[current_letter]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="57">
-          
+        <li class="covered" data-hits="379" data-linenumber="56">
+          <span class="hits">379</span>
           
           <code class="ruby">    next_prefix = prefix.drop(1)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="58">
-          
+        <li class="covered" data-hits="379" data-linenumber="57">
+          <span class="hits">379</span>
           
           <code class="ruby">    if next_prefix.length &gt; 0</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="59">
-          
+        <li class="covered" data-hits="336" data-linenumber="58">
+          <span class="hits">336</span>
           
           <code class="ruby">      traverse(next_prefix, new_node)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="60">
+        <li class="never" data-hits="" data-linenumber="59">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="61">
-          
+        <li class="covered" data-hits="43" data-linenumber="60">
+          <span class="hits">43</span>
           
           <code class="ruby">      return new_node</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="62">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="63">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="64">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="65">
+        <li class="covered" data-hits="1" data-linenumber="64">
           <span class="hits">1</span>
           
           <code class="ruby">  def build(original_prefix, prefix, node, suggestions)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="66">
-          
+        <li class="covered" data-hits="9895" data-linenumber="65">
+          <span class="hits">9895</span>
           
           <code class="ruby">    if node.complete_word</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="67">
-          
+        <li class="covered" data-hits="1131" data-linenumber="66">
+          <span class="hits">1131</span>
           
           <code class="ruby">      suggestions[prefix] = node.word_score[original_prefix]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="67">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="69">
-          
+        <li class="covered" data-hits="9895" data-linenumber="68">
+          <span class="hits">9895</span>
           
           <code class="ruby">    children = node.children.keys</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="70">
-          
+        <li class="covered" data-hits="9895" data-linenumber="69">
+          <span class="hits">9895</span>
           
           <code class="ruby">    if !children.empty?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="71">
-          
+        <li class="covered" data-hits="8790" data-linenumber="70">
+          <span class="hits">8790</span>
           
           <code class="ruby">      children.each do |child|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="72">
-          
+        <li class="covered" data-hits="9883" data-linenumber="71">
+          <span class="hits">9883</span>
           
           <code class="ruby">        new_prefix = prefix + child</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="73">
-          
+        <li class="covered" data-hits="9883" data-linenumber="72">
+          <span class="hits">9883</span>
           
           <code class="ruby">        pending_node = node.children[child]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="74">
-          
+        <li class="covered" data-hits="9883" data-linenumber="73">
+          <span class="hits">9883</span>
           
           <code class="ruby">        build(original_prefix, new_prefix, pending_node, suggestions)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="76">
-          
-          
           <code class="ruby">    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="77">
-          
+        <li class="covered" data-hits="9895" data-linenumber="76">
+          <span class="hits">9895</span>
           
           <code class="ruby">    return suggestions</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="78">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="79">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="80">
+        <li class="covered" data-hits="1" data-linenumber="79">
           <span class="hits">1</span>
           
           <code class="ruby">  def select(prefix, selection)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="81">
-          
+        <li class="covered" data-hits="7" data-linenumber="80">
+          <span class="hits">7</span>
           
           <code class="ruby">    selection_array = selection.split(&#39;&#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="82">
-          
+        <li class="covered" data-hits="7" data-linenumber="81">
+          <span class="hits">7</span>
           
           <code class="ruby">    final_node = traverse(selection_array, @root)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="83">
-          
+        <li class="covered" data-hits="7" data-linenumber="82">
+          <span class="hits">7</span>
           
           <code class="ruby">    if final_node.complete_word</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="84">
-          
+        <li class="covered" data-hits="7" data-linenumber="83">
+          <span class="hits">7</span>
           
           <code class="ruby">      if final_node.word_score.keys.include?(prefix)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="85">
-          
+        <li class="covered" data-hits="3" data-linenumber="84">
+          <span class="hits">3</span>
           
           <code class="ruby">        final_node.word_score[prefix] += 1</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby">      else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="87">
-          
+        <li class="covered" data-hits="4" data-linenumber="86">
+          <span class="hits">4</span>
           
           <code class="ruby">        final_node.word_score[prefix] = 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="88">
           
           
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="89">
-          
-          
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="90">
+        <li class="missed" data-hits="0" data-linenumber="89">
           
           
           <code class="ruby">      puts &quot;selection is not a word&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="91">
+        <li class="never" data-hits="" data-linenumber="90">
           
           
           <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="91">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="92">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="93">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="94">
+        <li class="covered" data-hits="1" data-linenumber="93">
           <span class="hits">1</span>
           
           <code class="ruby">  def clean_suggestions(params)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="95">
-          
+        <li class="covered" data-hits="12" data-linenumber="94">
+          <span class="hits">12</span>
           
           <code class="ruby">    params.keys.each do |word|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="96">
-          
+        <li class="covered" data-hits="1131" data-linenumber="95">
+          <span class="hits">1131</span>
           
           <code class="ruby">      if params[word] == nil</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="97">
-          
+        <li class="covered" data-hits="1125" data-linenumber="96">
+          <span class="hits">1125</span>
           
           <code class="ruby">        params[word] = 0</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="98">
+        <li class="never" data-hits="" data-linenumber="97">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="99">
+        <li class="never" data-hits="" data-linenumber="98">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="100">
-          
+        <li class="covered" data-hits="12" data-linenumber="99">
+          <span class="hits">12</span>
           
           <code class="ruby">    params</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="101">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="102">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="103">
+        <li class="covered" data-hits="1" data-linenumber="102">
           <span class="hits">1</span>
           
           <code class="ruby">  def sort_suggestions(params)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="104">
-          
+        <li class="covered" data-hits="1143" data-linenumber="103">
+          <span class="hits">1143</span>
           
           <code class="ruby">    sorted_hash = params.sort_by { |_, weight| weight * -1 }</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="105">
-          
+        <li class="covered" data-hits="12" data-linenumber="104">
+          <span class="hits">12</span>
           
           <code class="ruby">    sorted_hash.to_h.keys</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="105">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="106">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="107">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="108">
+        <li class="covered" data-hits="1" data-linenumber="107">
           <span class="hits">1</span>
           
           <code class="ruby">  def trim(params)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="109">
-          
+        <li class="covered" data-hits="12" data-linenumber="108">
+          <span class="hits">12</span>
           
           <code class="ruby">    if params.length &gt; 5</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="110">
-          
+        <li class="covered" data-hits="6" data-linenumber="109">
+          <span class="hits">6</span>
           
           <code class="ruby">      params.take(5)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="111">
+        <li class="never" data-hits="" data-linenumber="110">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="112">
-          
+        <li class="covered" data-hits="6" data-linenumber="111">
+          <span class="hits">6</span>
           
           <code class="ruby">      params</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="112">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="113">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="114">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="115">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="116">
+        <li class="covered" data-hits="1" data-linenumber="115">
           <span class="hits">1</span>
           
           <code class="ruby">  def delete_word(word)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="117">
-          
+        <li class="covered" data-hits="3" data-linenumber="116">
+          <span class="hits">3</span>
           
           <code class="ruby">    word_array = word.split(&#39;&#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="118">
-          
+        <li class="covered" data-hits="3" data-linenumber="117">
+          <span class="hits">3</span>
           
           <code class="ruby">    node = mark_as_not_a_word(word_array)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="119">
-          
+        <li class="covered" data-hits="3" data-linenumber="118">
+          <span class="hits">3</span>
           
           <code class="ruby">    if node.children.keys.length == 0</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="120">
-          
+        <li class="covered" data-hits="2" data-linenumber="119">
+          <span class="hits">2</span>
           
           <code class="ruby">      traverse_deleted_word(word_array)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="120">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="121">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="122">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="123">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="124">
+        <li class="covered" data-hits="1" data-linenumber="123">
           <span class="hits">1</span>
           
           <code class="ruby">  def mark_as_not_a_word(word_array)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="125">
-          
+        <li class="covered" data-hits="4" data-linenumber="124">
+          <span class="hits">4</span>
           
           <code class="ruby">    node = traverse(word_array, @root)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="126">
-          
+        <li class="covered" data-hits="4" data-linenumber="125">
+          <span class="hits">4</span>
           
           <code class="ruby">    node.complete_word = false</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="127">
-          
+        <li class="covered" data-hits="4" data-linenumber="126">
+          <span class="hits">4</span>
           
           <code class="ruby">    node</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="127">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="128">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="129">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="130">
+        <li class="covered" data-hits="1" data-linenumber="129">
           <span class="hits">1</span>
           
           <code class="ruby">  def traverse_deleted_word(word_array)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="131">
-          
+        <li class="covered" data-hits="10" data-linenumber="130">
+          <span class="hits">10</span>
           
           <code class="ruby">    child_node = traverse(word_array, @root)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="132">
-          
+        <li class="covered" data-hits="10" data-linenumber="131">
+          <span class="hits">10</span>
           
           <code class="ruby">    parent_node = traverse(word_array[0...-1], @root)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="133">
-          
+        <li class="covered" data-hits="10" data-linenumber="132">
+          <span class="hits">10</span>
           
           <code class="ruby">    delete_orphan_nodes(word_array, child_node, parent_node)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="133">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="134">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="135">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="136">
+        <li class="covered" data-hits="1" data-linenumber="135">
           <span class="hits">1</span>
           
           <code class="ruby">  def delete_orphan_nodes(word_array, child_node, parent_node)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="137">
-          
+        <li class="covered" data-hits="10" data-linenumber="136">
+          <span class="hits">10</span>
           
           <code class="ruby">    if parent_node.children.keys.length == 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="138">
-          
+        <li class="covered" data-hits="8" data-linenumber="137">
+          <span class="hits">8</span>
           
           <code class="ruby">      parent_node.children.delete(child_node.value)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="139">
-          
+        <li class="covered" data-hits="8" data-linenumber="138">
+          <span class="hits">8</span>
           
           <code class="ruby">      traverse_deleted_word(word_array[0...-1])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="140">
+        <li class="never" data-hits="" data-linenumber="139">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="141">
-          
+        <li class="covered" data-hits="2" data-linenumber="140">
+          <span class="hits">2</span>
           
           <code class="ruby">      parent_node.children.delete(child_node.value)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="142">
+        <li class="never" data-hits="" data-linenumber="141">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="143">
+        <li class="never" data-hits="" data-linenumber="142">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="144">
+        <li class="never" data-hits="" data-linenumber="143">
           
           
           <code class="ruby">end</code>
@@ -1019,26 +1023,26 @@
           <code class="ruby">  def initialize(value = nil)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="12162197" data-linenumber="7">
+          <span class="hits">12162197</span>
           
           <code class="ruby">    @complete_word = false</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="12162197" data-linenumber="8">
+          <span class="hits">12162197</span>
           
           <code class="ruby">    @children = {}</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="12162197" data-linenumber="9">
+          <span class="hits">12162197</span>
           
           <code class="ruby">    @value = value</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="12162197" data-linenumber="10">
+          <span class="hits">12162197</span>
           
           <code class="ruby">    @word_score = {}</code>
         </li>
@@ -1050,6 +1054,133 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="1fe41cb89e3f3ae11ad46cffdc7e470636ac3713">
+  <div class="header">
+    <h3>test/node_test.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>11</b> relevant lines. 
+      <span class="green"><b>11</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;./test/helper_test&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;./lib/node&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class NodeTest &lt; Minitest::Test</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def test_that_the_node_class_exists</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    node = Node.new</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    assert_instance_of Node, node</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def test_that_the_node_has_attributes</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    node = Node.new</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    assert_equal ({}), node.children</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    refute node.complete_word</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    assert_nil node.value</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">end</code>
