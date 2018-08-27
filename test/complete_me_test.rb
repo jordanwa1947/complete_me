@@ -103,13 +103,41 @@ class CompleteMeTest < Minitest::Test
     assert_equal expected, completion.suggest('pi')
   end
 
-  def test_it_deletes_a_word
+  def test_it_returns_a_node_as_not_a_complete_word
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
 
     expected = ["try", "trying", "tryout"]
     assert_equal = expected, completion.suggest('try')
+
+    word_array = "try".split('')
+    node = completion.mark_as_not_a_word(word_array)
+    refute node.complete_word
+  end
+
+  def test_it_traverses_a_deleted_word
+    completion = CompleteMe.new
+    dictionary = "try\ntrying\ntryout"
+    completion.populate(dictionary)
+  
+# add assertion
+
+  end
+
+  def test_it_deletes_orphan_nodes
+    completion = CompleteMe.new
+    dictionary = "try\ntrying\ntryout"
+    completion.populate(dictionary)
+  
+# add assertion
+
+  end
+
+  def test_it_deletes_a_word
+    completion = CompleteMe.new
+    dictionary = "try\ntrying\ntryout"
+    completion.populate(dictionary)
 
     completion.delete_word('trying')
 
