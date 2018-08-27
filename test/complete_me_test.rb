@@ -50,7 +50,7 @@ class CompleteMeTest < Minitest::Test
     assert a_node.complete_word
   end
 
-  def test_it_can_populate
+  def test_it_can_populate_words
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -58,7 +58,7 @@ class CompleteMeTest < Minitest::Test
     assert_equal 235886, completion.count
   end
 
-  def test_it_can_generate_suggestions
+  def test_it_can_suggest_words
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -116,7 +116,7 @@ class CompleteMeTest < Minitest::Test
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
-
+    # add assertion
 
   end
 
@@ -125,7 +125,7 @@ class CompleteMeTest < Minitest::Test
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
 
-# add assertion
+    # add assertion
 
   end
 
@@ -143,5 +143,97 @@ class CompleteMeTest < Minitest::Test
 
     expected = ["tryout"]
     assert_equal expected, completion.suggest('try')
+  end
+
+  def test_it_can_populate_addresses
+    completion = CompleteMe.new
+    relative_path = "./data/addresses"
+    absolute_path = File.expand_path(relative_path)
+    addresses = File.read(absolute_path)
+    completion.populate(addresses)
+
+    assert_equal 313493, completion.count
+  end
+
+  def test_it_can_suggest_addresses
+    completion = CompleteMe.new
+    relative_path = "./data/addresses"
+    absolute_path = File.expand_path(relative_path)
+    addresses = File.read(absolute_path)
+    completion.populate(addresses)
+
+    expected = ["12344 E Olmsted Dr",
+      "1234 E 22nd Ave",
+      "1234 E 28th Ave",
+      "1234 E Colfax Ave",
+      "1234 E Colfax Ave Ste 201"]
+
+    assert_equal expected, completion.suggest("1234")
+  end
+
+  def test_that_it_can_suggest_based_on_word_score
+    completion = CompleteMe.new
+    relative_path = "./data/addresses"
+    absolute_path = File.expand_path(relative_path)
+    addresses = File.read(absolute_path)
+    completion.populate(addresses)
+
+    completion.select("1234", "1234 E Colfax Ave")
+    completion.suggest("1234")
+
+    expected = ["1234 E Colfax Ave",
+      "1234 E 22nd Ave",
+      "1234 E 28th Ave",
+      "1234 E Colfax Ave Ste 201",
+      "1234 E Colfax Ave Ste 202"]
+
+    assert_equal expected, completion.suggest("1234")
+  end
+
+  def test_that_it_can_suggest_based_on_prefix_score_combination
+    completion = CompleteMe.new
+    relative_path = "./data/addresses"
+    absolute_path = File.expand_path(relative_path)
+    addresses = File.read(absolute_path)
+    completion.populate(addresses)
+
+    completion.select("1234", "1234 E Colfax Ave")
+    completion.select("1234", "1234 E Colfax Ave")
+    completion.select("1234", "1234 E Colfax Ave")
+    completion.suggest("1234")
+
+    completion.select("123", "1234 E 22nd Ave")
+    completion.select("123", "1234 E 22nd Ave")
+    completion.select("123", "1234 E 28th Ave")
+
+    expected = ["1234 E Colfax Ave",
+      "1234 E 22nd Ave",
+      "1234 E 28th Ave",
+      "1234 E Colfax Ave Ste 201",
+      "1234 E Colfax Ave Ste 202"]
+    assert_equal expected, completion.suggest('1234')
+
+    expected = ["1234 E 22nd Ave",
+      "1234 E 28th Ave",
+      "12300 E 55th Ave",
+      "12300 E 39th Ave",
+      "12300 E 48th Ave"]
+    assert_equal expected, completion.suggest('123')
+  end
+
+  def test_it_deletes_an_address
+    completion = CompleteMe.new
+    relative_path = "./data/addresses"
+    absolute_path = File.expand_path(relative_path)
+    addresses = File.read(absolute_path)
+    completion.populate(addresses)
+
+    expected = ["1234 E 27th Ave", "1234 E 22nd Ave", "1234 E 28th Ave"]
+    assert_equal expected, completion.suggest('1234 E 2')
+
+    completion.delete_word('1234 E 22nd Ave')
+
+    expected = ["1234 E 27th Ave", "1234 E 28th Ave"]
+    assert_equal expected, completion.suggest('1234 E 2')
   end
 end
