@@ -5,12 +5,14 @@ require './lib/node'
 class CompleteMeTest < Minitest::Test
 
   def test_that_the_complete_me_class_exists
+    skip
     completion = CompleteMe.new
 
     assert_instance_of CompleteMe, completion
   end
 
   def test_it_can_count
+    skip
     completion = CompleteMe.new
     completion.insert('pizza')
     completion.insert('hello')
@@ -19,6 +21,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_create_root_node
+    skip
     completion = CompleteMe.new
 
     assert_equal ({}), completion.root.children
@@ -26,6 +29,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_add_single_character
+    skip
     completion = CompleteMe.new
     completion.insert("s")
 
@@ -33,6 +37,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_add_a_single_word
+    skip
     completion = CompleteMe.new
     completion.insert('pizza')
 
@@ -51,6 +56,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_populate
+    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -59,6 +65,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_generate_suggestions
+    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -69,6 +76,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_that_it_can_suggest_based_on_word_score
+    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -80,6 +88,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_that_it_can_suggest_based_on_prefix_score_combination
+    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -100,6 +109,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_returns_a_node_as_not_a_complete_word
+    skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -113,6 +123,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_traverses_a_deleted_word
+    skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -121,6 +132,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_deletes_orphan_nodes
+    skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -130,6 +142,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_deletes_a_word
+    skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -147,10 +160,10 @@ class CompleteMeTest < Minitest::Test
 
   def test_it_can_populate_addresses
     completion = CompleteMe.new
-    addresses = ("/data/addresses.csv")
+    addresses = File.read("/data/addresses")
     completion.populate(addresses)
 
-    assert_equal , completion.count
+    assert_equal 313494, completion.count
   end
 
 end
