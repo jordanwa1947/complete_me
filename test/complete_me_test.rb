@@ -235,4 +235,20 @@ class CompleteMeTest < Minitest::Test
     assert_equal expected, completion.suggest('123')
   end
 
+    def test_it_deletes_an_address
+    completion = CompleteMe.new
+    relative_path = "./data/addresses"
+    absolute_path = File.expand_path(relative_path)
+    addresses = File.read(absolute_path)
+    completion.populate(addresses)
+
+    expected = ["1234 E 27th Ave", "1234 E 22nd Ave", "1234 E 28th Ave"]
+    assert_equal expected, completion.suggest('1234 E 2')
+
+    completion.delete_word('1234 E 22nd Ave')
+
+    expected = ["1234 E 27th Ave", "1234 E 28th Ave"]
+    assert_equal expected, completion.suggest('1234 E 2')
+  end
+
 end
