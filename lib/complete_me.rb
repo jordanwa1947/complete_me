@@ -100,8 +100,8 @@ class CompleteMe
   end
 
   def sort_suggestions(params)
-    sorted_hash = params.sort_by { |word, weight| weight * -1 }
-    sorted_array = sorted_hash.to_h.keys
+    sorted_hash = params.sort_by { |_, weight| weight * -1 }
+    sorted_hash.to_h.keys
   end
 
   def trim(params)
@@ -125,7 +125,7 @@ class CompleteMe
     node.complete_word = false
     node
   end
-  
+
   def traverse_deleted_word(word_array)
     child_node = traverse(word_array, @root)
     parent_node = traverse(word_array[0...-1], @root)

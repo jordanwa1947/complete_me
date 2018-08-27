@@ -51,7 +51,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_populate
-    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -60,7 +59,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_generate_suggestions
-    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -71,7 +69,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_that_it_can_suggest_based_on_word_score
-    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -83,7 +80,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_that_it_can_suggest_based_on_prefix_score_combination
-    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -109,7 +105,7 @@ class CompleteMeTest < Minitest::Test
     completion.populate(dictionary)
 
     expected = ["try", "trying", "tryout"]
-    assert_equal = expected, completion.suggest('try')
+    assert_equal  expected, completion.suggest('try')
 
     word_array = "try".split('')
     node = completion.mark_as_not_a_word(word_array)
@@ -120,8 +116,7 @@ class CompleteMeTest < Minitest::Test
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
-  
-# add assertion
+
 
   end
 
@@ -129,7 +124,7 @@ class CompleteMeTest < Minitest::Test
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
-  
+
 # add assertion
 
   end
