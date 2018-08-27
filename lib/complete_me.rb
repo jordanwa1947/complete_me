@@ -116,17 +116,20 @@ class CompleteMe
     word_array = word.split('')
     final_node = traverse(word_array, @root)
     final_node.complete_word = false
+    if final_node.children.keys.length == 0
+      traverse_deleted_word(word_array)
+    end
   end
 
-  # def traverse_deleted_word(word, prefix, node)
-  #   prefix << word.first
-  #   word = word.shift
-  #   node = traverse(prefix, node)
-  #   if node.children.values.length > 1
-  #     child_node = node.children[word[0]]
-  #     traverse_deleted_word(word, prefix, child_node)
-  #   else node.children.values.length == 1
-  #     node.complete_word = false
-  #   end
-  # end
+  def traverse_deleted_word(word)
+    child_node = traverse(word, @root)
+    parent_node = traverse(word[0...-1], @root)
+    if parent_node.children.keys.length == 1
+      parent_node.children.delete(child_node.value)
+      traverse_deleted_word(word[0...-1])
+    else
+      parent_node.children.delete(child_node.value)
+    end
+  end
+
 end
