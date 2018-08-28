@@ -257,13 +257,15 @@ class CompleteMeTest < Minitest::Test
 
   def test_it_returns_a_definition
     completion = CompleteMe.new
-    expected = "a point in a network or diagram at which lines or pathways intersect or branch"
-    actual = completion.fetch_definition("node")
+
+    expected = "a human being regarded as an individual"
+    actual = completion.fetch_definition("person")
     assert_equal expected, actual
   end
 
   def test_it_returns_an_error_when_no_definition_found
     completion = CompleteMe.new
+
     expected = "No definition found for trie (status: 404)"
     actual = completion.fetch_definition("trie")
     assert_equal expected, actual
@@ -277,7 +279,38 @@ class CompleteMeTest < Minitest::Test
     conn = Faraday.new
     response = completion.get_fetch(word, keys, url, conn)
     result = JSON.parse(response.body)
+
     assert_equal "test", result["results"][0]["id"]
+  end
+
+  def test_it_can_evaluate_a_fetch_response
+    completion = CompleteMe.new
+    word = "person"
+    keys = Key.new
+    url = "https://od-api.oxforddictionaries.com:443/api/v1/entries/en/"
+    conn = Faraday.new
+    response = completion.get_fetch(word, keys, url, conn)
+
+    expected = "a human being regarded as an individual"
+    actual = completion.evaluate_fetch_response(word, response)
+    assert_equal expected, actual
+
+    word = "pursun"
+    response = completion.get_fetch(word, keys, url, conn)
+
+    expected = "No definition found for pursun (status: 404)"
+    actual = completion.evaluate_fetch_response(word, response)
+    assert_equal expected, actual
+
+    url = "https://od-api.oxforddictionaries.com:443/api/wtf/"
+    response = completion.get_fetch(word, keys, url, conn)
+
+    expected = "Something went wrong (status: 500)"
+    actual = completion.evaluate_fetch_response(word, response)
+    # assert_equal expected, actual
+
+    # need to replicate server error
+
   end
 
 end
