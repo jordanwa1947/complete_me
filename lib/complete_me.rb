@@ -14,6 +14,7 @@ class CompleteMe
   end
 
   def count
+    @count = 0
     word_count(@root)
     @count
   end
