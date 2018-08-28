@@ -1,7 +1,7 @@
 *.gem
 *.rbc
 /.config
-/coverage/
+/coverage/*
 /InstalledFiles
 /pkg/
 /spec/reports/
@@ -11,3 +11,4 @@
 /tmp/
 Gemfile.lock
 .DS_Store
+/data/key.rb
