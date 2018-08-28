@@ -269,4 +269,15 @@ class CompleteMeTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_it_can_fetch_using_get_method
+    completion = CompleteMe.new
+    word = "test"
+    keys = Key.new
+    url = "https://od-api.oxforddictionaries.com:443/api/v1/entries/en/"
+    conn = Faraday.new
+    response = completion.get_fetch(word, keys, url, conn)
+    result = JSON.parse(response.body)
+    assert_equal "test", result["results"][0]["id"]
+  end
+
 end
