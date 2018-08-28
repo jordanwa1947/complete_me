@@ -59,6 +59,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_suggest_words
+    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -69,6 +70,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_that_it_can_suggest_based_on_word_score
+    skip
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
     completion.populate(dictionary)
@@ -146,6 +148,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_populate_addresses
+    skip
     completion = CompleteMe.new
     relative_path = "./data/addresses"
     absolute_path = File.expand_path(relative_path)
@@ -156,6 +159,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_can_suggest_addresses
+    skip
     completion = CompleteMe.new
     relative_path = "./data/addresses"
     absolute_path = File.expand_path(relative_path)
@@ -172,6 +176,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_that_it_can_suggest_based_on_word_score
+    skip
     completion = CompleteMe.new
     relative_path = "./data/addresses"
     absolute_path = File.expand_path(relative_path)
@@ -191,6 +196,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_that_it_can_suggest_based_on_prefix_score_combination
+    skip
     completion = CompleteMe.new
     relative_path = "./data/addresses"
     absolute_path = File.expand_path(relative_path)
@@ -222,6 +228,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_deletes_an_address
+    skip
     completion = CompleteMe.new
     relative_path = "./data/addresses"
     absolute_path = File.expand_path(relative_path)
