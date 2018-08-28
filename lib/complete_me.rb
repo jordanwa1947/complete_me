@@ -110,7 +110,7 @@ class CompleteMe
   end
 
   def sort_suggestions(params)
-    sorted_hash = params.sort_by { |_, weight| weight * -1 }
+    sorted_hash = params.sort_by { |value, weight| [-weight, value] }
     sorted_hash.to_h.keys
   end
 
