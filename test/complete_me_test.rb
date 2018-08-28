@@ -262,4 +262,11 @@ class CompleteMeTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_it_returns_an_error_when_no_definition_found
+    completion = CompleteMe.new
+    expected = "No definition found for trie (status: 404)"
+    actual = completion.fetch_definition("trie")
+    assert_equal expected, actual
+  end
+
 end

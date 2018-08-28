@@ -100,9 +100,9 @@ class CompleteMe
     response = conn.get "#{url}#{word}", 
       {}, #parameters
       {   #headers
-      "Accept" => "application/json",
-      "app_id" => keys.id,
-      "app_key" => keys.key
+        "Accept" => "application/json",
+        "app_id" => keys.id,
+        "app_key" => keys.key
       }
       if response.status == 200
         result = JSON.parse(response.body)
