@@ -4,19 +4,29 @@ require 'pry'
 class CompleteMe
   attr_reader :root
   def initialize
-    @word_count = 0
     @root = Node.new
+    @count = 0
   end
 
   def insert(word)
-    @word_count += 1
     word_array = word.split('')
     add_node(word_array, @root)
   end
 
   def count
-    @word_count
+    word_count(@root)
+    @count
   end
+
+  def word_count(node)
+    node.children.values.each do |child|
+      if child.complete_word == true
+         @count += 1
+      end
+      word_count(child)
+    end
+  end
+
 
   def add_node(word, parent_node)
     child_char = word.first
