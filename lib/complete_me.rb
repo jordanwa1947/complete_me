@@ -97,6 +97,11 @@ class CompleteMe
     keys = Key.new
     url = "https://od-api.oxforddictionaries.com:443/api/v1/entries/en/"
     conn = Faraday.new
+    response = get_fetch(word, keys, url, conn)
+    evaluate_fetch_response(word, response)
+  end
+
+  def get_fetch(word, keys, url, conn)
     response = conn.get "#{url}#{word}", 
       {}, #parameters
       {   #headers
@@ -104,15 +109,18 @@ class CompleteMe
         "app_id" => keys.id,
         "app_key" => keys.key
       }
-      if response.status == 200
-        result = JSON.parse(response.body)
-        result["results"][0]["lexicalEntries"][0]["entries"][0]["senses"][0]["definitions"][0]
-      elsif response.status == 404
-        "No definition found for #{word} (status: 404)"
-      else
-        "Something went wrong (status: #{response.status}"
-      end
+  end
+
+  def evaluate_fetch_response(word, response)
+    if response.status == 200
+      result = JSON.parse(response.body)
+      result["results"][0]["lexicalEntries"][0]["entries"][0]["senses"][0]["definitions"][0]
+    elsif response.status == 404
+      "No definition found for #{word} (status: 404)"
+    else
+      "Something went wrong (status: #{response.status}"
     end
+  end
 
   def clean_suggestions(params)
     params.keys.each do |word|
