@@ -29,7 +29,7 @@ class CompleteMeTest < Minitest::Test
     completion = CompleteMe.new
     completion.insert("s")
 
-    assert_equal "s", completion.root.children["s"].value
+    assert_equal "s", completion.root.children["s"].character
   end
 
   def test_it_can_add_a_single_word
@@ -42,11 +42,11 @@ class CompleteMeTest < Minitest::Test
     z_two_node = z_node.children["z"]
     a_node = z_two_node.children["a"]
 
-    assert_equal "p", p_node.value
-    assert_equal "i", i_node.value
-    assert_equal "z", z_node.value
-    assert_equal "z", z_two_node.value
-    assert_equal "a", a_node.value
+    assert_equal "p", p_node.character
+    assert_equal "i", i_node.character
+    assert_equal "z", z_node.character
+    assert_equal "z", z_two_node.character
+    assert_equal "a", a_node.character
     assert a_node.complete_word
   end
 

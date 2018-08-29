@@ -2,7 +2,6 @@ require 'faraday'
 require 'JSON'
 require './data/key'
 require './lib/node'
-require 'pry'
 
 class CompleteMe
   attr_reader :root
@@ -17,7 +16,7 @@ class CompleteMe
   end
 
   def count
-    @count = 0
+    count = 0
 
     word_count(@root)
     @count
@@ -181,10 +180,10 @@ class CompleteMe
 
   def delete_orphan_nodes(word_array, child_node, parent_node)
     if parent_node.children.keys.length == 1
-      parent_node.children.delete(child_node.value)
+      parent_node.children.delete(child_node.character)
       traverse_deleted_word(word_array[0...-1])
     else
-      parent_node.children.delete(child_node.value)
+      parent_node.children.delete(child_node.character)
     end
   end
 end
