@@ -1,3 +1,6 @@
+require 'faraday'
+require 'JSON'
+require './data/key'
 require './lib/node'
 require 'pry'
 
@@ -15,6 +18,7 @@ class CompleteMe
 
   def count
     @count = 0
+
     word_count(@root)
     @count
   end
@@ -101,6 +105,35 @@ class CompleteMe
       end
     else
       puts "selection is not a word"
+    end
+  end
+
+  def fetch_definition(word)
+    keys = Key.new
+    url = "https://od-api.oxforddictionaries.com:443/api/v1/entries/en/"
+    conn = Faraday.new
+    response = get_fetch(word, keys, url, conn)
+    evaluate_fetch_response(word, response)
+  end
+
+  def get_fetch(word, keys, url, conn)
+    response = conn.get "#{url}#{word}", 
+      {}, #parameters
+      {   #headers
+        "Accept" => "application/json",
+        "app_id" => keys.id,
+        "app_key" => keys.key
+      }
+  end
+
+  def evaluate_fetch_response(word, response)
+    if response.status == 200
+      result = JSON.parse(response.body)
+      result["results"][0]["lexicalEntries"][0]["entries"][0]["senses"][0]["definitions"][0]
+    elsif response.status == 404
+      "No definition found for #{word} (status: 404)"
+    else
+      "Something went wrong (status: #{response.status}"
     end
   end
 
