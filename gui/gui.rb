@@ -1,6 +1,5 @@
 require 'flammarion'
 require './lib/complete_me'
-require 'colorized'
 require 'pry'
 
 f = Flammarion::Engraving.new
