@@ -33,8 +33,8 @@ Jordan: Ruby code; problem-solving in code; wants to better understand recursion
 Michael: TDD and git are strengths; seeks to be able to better articulate how a prefix trie works and is implemented
 
 #Workload Expectations (What features do we each want to work on?):
-Silvestre: 
-Jordan: 
+Silvestre: Anything related to building and manipulating trie data structure
+Jordan: GUI, recursion
 Michael: Wants to build a GUI connecting Ruby
 
 ## Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests):
@@ -50,9 +50,16 @@ Be respectful, but be direct
 ## Agenda to discuss project launch:
 
 ### Ideas:  
-Friday night: file structure, 
+* Friday night: DTR
+* Saturday: File/git setup; iterations 1 & 2
+* Sunday: Iterations 2 & 3
+* Monday: Refactor
+* Tuesday: Iteration 4
+* Wednesday: Refactor, code review 
 
 ### Tools:  
 Git/GitHub; GitHub Issues; Slack; Google
 
 ### Additional Notes:
+
+GTSO!
