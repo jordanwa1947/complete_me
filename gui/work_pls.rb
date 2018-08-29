@@ -1,6 +1,6 @@
 require 'flammarion'
 require './lib/complete_me'
-require 'colorized'
+# require 'colorized'
 require 'pry'
 
 f = Flammarion::Engraving.new
@@ -32,6 +32,10 @@ def definition(instance)
   instance.subpane("word_meaning")
 end
 
+def selected_word(instance)
+  instance.subpane("word_selection")
+end
+
 f.puts"Welcome to Data Finder!"
 f.html("<center> <h1> Welcome to Data Finder! </h1> </center>")
 
@@ -42,10 +46,10 @@ f.button("Find!!!!") do
   suggestion(f).html("<center><h2>pick a word!</h2><center>")
   suggestion(f).dropdown(completion.suggest(input_chars)) do |word|
     completion.select(input_chars, word["value"])
-  definition(f).html("<center><h2>I'm a #{word["value"]} definition!</h2><center>")
+  word_definition = completion.fetch_definition(word["value"])
+  selected_word(f).html("<center><h2>You selected #{word["value"]}!!!!</h2><center>")
+  definition(f).html("<center><h2>#{word_definition}</h2><center>")
   end
 end
-
-# We need the definition here
 
 f.wait_until_closed
