@@ -129,11 +129,15 @@ class CompleteMeTest < Minitest::Test
     completion.populate(dictionary)
     word_array = "tryout".split('')
     completion.traverse_deleted_word(word_array)
-    prefix_array = "tryi".split('')
-    i_node = completion.root.children["t"].children["r"].children["y"].children["i"]
 
+    i_node = completion.root.children["t"]
+                            .children["r"]
+                            .children["y"]
+                            .children["i"]
     expected = {"i" => i_node}
-    actual = completion.root.children["t"].children["r"].children["y"].children
+    actual = completion.root.children["t"]
+                            .children["r"]
+                            .children["y"].children
     assert_equal expected, actual
   end
 
@@ -144,11 +148,15 @@ class CompleteMeTest < Minitest::Test
     completion.populate(dictionary)
     word_array = "tryout".split('')
     completion.traverse_deleted_word(word_array)
-    prefix_array = "tryi".split('')
-    i_node = completion.root.children["t"].children["r"].children["y"].children["i"]
 
+    i_node = completion.root.children["t"]
+                            .children["r"]
+                            .children["y"]
+                            .children["i"]
     expected = {"i" => i_node}
-    actual = completion.root.children["t"].children["r"].children["y"].children
+    actual = completion.root.children["t"]
+                            .children["r"]
+                            .children["y"].children
     assert_equal expected, actual
 
   end
