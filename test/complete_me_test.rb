@@ -105,7 +105,7 @@ class CompleteMeTest < Minitest::Test
     expected = ["pizzeria", "pize", "pizza", "pizzicato", "pizzle"]
     assert_equal expected, completion.suggest('piz')
 
-    expected = ["pizza", "pizzicato", "piaba", "piacaba", "piacle"]
+    expected = ["pizza", "pizzicato", "pi", "pia", "piaba"]
     assert_equal expected, completion.suggest('pi')
   end
 
