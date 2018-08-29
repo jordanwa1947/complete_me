@@ -58,6 +58,16 @@ class CompleteMeTest < Minitest::Test
     assert_equal 235886, completion.count
   end
 
+  def test_it_doesnt_error_out_when_prefix_is_invalid
+    completion = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    completion.populate(dictionary)
+
+    actual = completion.traverse('vjx'.split(''), completion.root)
+
+    assert_equal 'Invalid prefix', actual
+  end
+
   def test_it_can_suggest_words
     completion = CompleteMe.new
     dictionary = File.read("/usr/share/dict/words")
@@ -113,23 +123,68 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_traverses_a_deleted_word
+<<<<<<< HEAD
+=======
+    # skip
+>>>>>>> 911cba987879d3db0b9b40f22d29b30b3b87d98c
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
-    # add assertion
+    word_array = "tryout".split('')
+    completion.traverse_deleted_word(word_array)
 
+    i_node = completion.root.children["t"]
+                            .children["r"]
+                            .children["y"]
+                            .children["i"]
+    expected = {"i" => i_node}
+    actual = completion.root.children["t"]
+                            .children["r"]
+                            .children["y"].children
+    assert_equal expected, actual
   end
 
   def test_it_deletes_orphan_nodes
+<<<<<<< HEAD
+=======
+    # skip
+>>>>>>> 911cba987879d3db0b9b40f22d29b30b3b87d98c
+    completion = CompleteMe.new
+    dictionary = "try\ntrying\ntryout"
+    completion.populate(dictionary)
+    word_array = "tryout".split('')
+    completion.traverse_deleted_word(word_array)
+
+    i_node = completion.root.children["t"]
+                            .children["r"]
+                            .children["y"]
+                            .children["i"]
+    expected = {"i" => i_node}
+    actual = completion.root.children["t"]
+                            .children["r"]
+                            .children["y"].children
+    assert_equal expected, actual
+
+  end
+
+<<<<<<< HEAD
+  def test_it_deletes_a_word
+=======
+  def test_it_deletes_a_word_with_child_nodes
+    # skip
+>>>>>>> 911cba987879d3db0b9b40f22d29b30b3b87d98c
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
 
-    # add assertion
+    completion.delete_word('try')
 
+    expected = ["trying", "tryout"]
+    assert_equal expected, completion.suggest('try')
   end
 
-  def test_it_deletes_a_word
+  def test_it_deletes_a_word_without_child_nodes
+    # skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -137,11 +192,6 @@ class CompleteMeTest < Minitest::Test
     completion.delete_word('trying')
 
     expected = ["try", "tryout"]
-    assert_equal expected, completion.suggest('try')
-
-    completion.delete_word('try')
-
-    expected = ["tryout"]
     assert_equal expected, completion.suggest('try')
   end
 
@@ -152,7 +202,7 @@ class CompleteMeTest < Minitest::Test
     addresses = File.read(absolute_path)
     completion.populate(addresses)
 
-    assert_equal 313493, completion.count
+    assert_equal 313415, completion.count
   end
 
   def test_it_can_suggest_addresses
