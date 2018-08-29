@@ -16,8 +16,7 @@ class CompleteMe
   end
 
   def count
-    count = 0
-
+    @count = 0
     word_count(@root)
     @count
   end
@@ -32,16 +31,27 @@ class CompleteMe
   end
 
   def add_node(word, parent_node)
+    child_node = check_for_existing_child_node(word, parent_node)
+    mature_child_node(word, child_node)
+  end
+
+  def check_for_existing_child_node(word, parent_node)
     child_char = word.first
     if !parent_node.children[child_char]
       child_node = Node.new(child_char)
       parent_node.children[child_char] = child_node
+      return child_node
     else
       child_node = parent_node.children[child_char]
+      return child_node
     end
+  end
+
+  def mature_child_node(word, child_node)
     new_word = word.drop(1)
     if new_word.length > 0
-      add_node(new_word, child_node)
+      new_child_node = check_for_existing_child_node(new_word, child_node)
+      mature_child_node(new_word, new_child_node)
     else
       child_node.complete_word = true
     end
