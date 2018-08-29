@@ -141,8 +141,20 @@ class CompleteMeTest < Minitest::Test
 
   end
 
-  def test_it_deletes_a_word
-    skip
+  def test_it_deletes_a_word_with_child_nodes
+    # skip
+    completion = CompleteMe.new
+    dictionary = "try\ntrying\ntryout"
+    completion.populate(dictionary)
+
+    completion.delete_word('try')
+
+    expected = ["trying", "tryout"]
+    assert_equal expected, completion.suggest('try')
+  end
+
+  def test_it_deletes_a_word_without_child_nodes
+    # skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -150,11 +162,6 @@ class CompleteMeTest < Minitest::Test
     completion.delete_word('trying')
 
     expected = ["try", "tryout"]
-    assert_equal expected, completion.suggest('try')
-
-    completion.delete_word('try')
-
-    expected = ["tryout"]
     assert_equal expected, completion.suggest('try')
   end
 
