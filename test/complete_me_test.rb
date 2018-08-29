@@ -32,6 +32,25 @@ class CompleteMeTest < Minitest::Test
     assert_equal "s", completion.root.children["s"].character
   end
 
+  def test_it_checks_for_existing_child
+    completion = CompleteMe.new
+    completion.insert('s')
+    expected = completion.root.children["s"]
+    actual = completion.check_for_existing_child_node(['s'], completion.root)
+
+    assert_equal expected, actual
+  end
+
+  def test_it_can_mature_a_child_node 
+    completion = CompleteMe.new
+    completion.insert('as')
+    a_node = completion.root.children['a']
+    s_node = a_node.children['s']
+
+    assert_equal ['s'], a_node.children.keys
+    assert s_node.complete_word
+  end
+
   def test_it_can_add_a_single_word
     completion = CompleteMe.new
     completion.insert('pizza')

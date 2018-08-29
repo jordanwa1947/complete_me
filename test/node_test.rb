@@ -13,6 +13,6 @@ class NodeTest < Minitest::Test
 
     assert_equal ({}), node.children
     refute node.complete_word
-    assert_nil node.value
+    assert_nil node.character
   end
 end

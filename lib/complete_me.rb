@@ -67,10 +67,14 @@ class CompleteMe
   def suggest(prefix)
     prefix_array = prefix.split("")
     target_node = traverse(prefix_array, @root)
-    suggestion_hash = build(prefix, prefix, target_node, {})
-    clean_hash = clean_suggestions(suggestion_hash)
-    sorted_hash = sort_suggestions(clean_hash)
-    trim(sorted_hash)
+    if target_node != "Invalid prefix"
+      suggestion_hash = build(prefix, prefix, target_node, {})
+      clean_hash = clean_suggestions(suggestion_hash)
+      sorted_hash = sort_suggestions(clean_hash)
+      trim(sorted_hash)
+    else 
+      return ["No suggestions."]
+    end
   end
 
   def traverse(prefix, node)
@@ -92,11 +96,11 @@ class CompleteMe
     if node.complete_word
       suggestions[prefix] = node.word_score[original_prefix]
     end
-    children = node.children.keys
-    if !children.empty?
-      children.each do |child|
-        new_prefix = prefix + child
-        pending_node = node.children[child]
+    child_keys = node.children.keys
+    if !child_keys.empty?
+      child_keys.each do |child_key|
+        new_prefix = prefix + child_key
+        pending_node = node.children[child_key]
         build(original_prefix, new_prefix, pending_node, suggestions)
       end
     end
@@ -126,7 +130,7 @@ class CompleteMe
   end
 
   def get_fetch(word, keys, url, conn)
-    response = conn.get "#{url}#{word}", 
+    conn.get "#{url}#{word}", 
       {}, #parameters
       {   #headers
         "Accept" => "application/json",
@@ -146,25 +150,25 @@ class CompleteMe
     end
   end
 
-  def clean_suggestions(params)
-    params.keys.each do |word|
-      if params[word] == nil
-        params[word] = 0
+  def clean_suggestions(suggestion_hash)
+    suggestion_hash.keys.each do |word|
+      if suggestion_hash[word] == nil
+        suggestion_hash[word] = 0
       end
     end
-    params
+    suggestion_hash
   end
 
-  def sort_suggestions(params)
-    sorted_hash = params.sort_by { |value, weight| [-weight, value] }
+  def sort_suggestions(suggestion_hash)
+    sorted_hash = suggestion_hash.sort_by { |character, weight| [-weight, character] }
     sorted_hash.to_h.keys
   end
 
-  def trim(params)
-    if params.length > 5
-      params.take(5)
+  def trim(suggestion_array)
+    if suggestion_array.length > 5
+      suggestion_array.take(5)
     else
-      params
+      suggestion_array
     end
   end
 
