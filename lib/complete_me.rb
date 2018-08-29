@@ -17,7 +17,8 @@ class CompleteMe
   end
 
   def count
-    @count = 0 
+    @count = 0
+
     word_count(@root)
     @count
   end
@@ -30,7 +31,6 @@ class CompleteMe
       word_count(child)
     end
   end
-
 
   def add_node(word, parent_node)
     child_char = word.first
@@ -66,13 +66,17 @@ class CompleteMe
 
   def traverse(prefix, node)
     current_letter = prefix.first
-    next_node = node.children[current_letter]
-    next_prefix = prefix.drop(1)
-    if next_prefix.length > 0
-      traverse(next_prefix, next_node)
+    if node.children[current_letter] != nil
+      new_node = node.children[current_letter]
+      next_prefix = prefix.drop(1)
+      if next_prefix.length > 0
+        traverse(next_prefix, new_node)
+      else
+        return new_node
+      end
     else
-      return next_node
-    end
+      'Invalid prefix'
+    end 
   end
 
   def build(original_prefix, prefix, node, suggestions)

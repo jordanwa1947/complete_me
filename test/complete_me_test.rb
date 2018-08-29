@@ -64,6 +64,16 @@ class CompleteMeTest < Minitest::Test
     assert_equal 235886, completion.count
   end
 
+  def test_it_doesnt_error_out_when_prefix_is_invalid
+    completion = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    completion.populate(dictionary)
+
+    actual = completion.traverse('vjx'.split(''), completion.root)
+
+    assert_equal 'Invalid prefix', actual
+  end
+
   def test_it_can_suggest_words
     skip
     completion = CompleteMe.new
@@ -193,7 +203,7 @@ class CompleteMeTest < Minitest::Test
     addresses = File.read(absolute_path)
     completion.populate(addresses)
 
-    assert_equal 313493, completion.count
+    assert_equal 313415, completion.count
   end
 
   def test_it_can_suggest_addresses
