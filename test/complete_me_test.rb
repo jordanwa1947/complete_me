@@ -123,7 +123,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_traverses_a_deleted_word
-    # skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -142,7 +141,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_deletes_orphan_nodes
-    # skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -162,7 +160,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_deletes_a_word_with_child_nodes
-    # skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -174,7 +171,6 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_deletes_a_word_without_child_nodes
-    # skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
