@@ -66,12 +66,12 @@ class CompleteMe
 
   def traverse(prefix, node)
     current_letter = prefix.first
-    new_node = node.children[current_letter]
+    next_node = node.children[current_letter]
     next_prefix = prefix.drop(1)
     if next_prefix.length > 0
-      traverse(next_prefix, new_node)
+      traverse(next_prefix, next_node)
     else
-      return new_node
+      return next_node
     end
   end
 

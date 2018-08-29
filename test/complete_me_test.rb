@@ -123,12 +123,18 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_traverses_a_deleted_word
-    skip
+    # skip
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
-    # add assertion
+    word_array = "tryout".split('')
+    completion.traverse_deleted_word(word_array)
+    prefix_array = "tryi".split('')
+    i_node = completion.traverse(prefix_array, completion.root)
 
+    expected = {"i" => i_node}
+    actual = completion.root.children["t"].children["r"].children["y"].children
+    assert_equal expected, actual
   end
 
   def test_it_deletes_orphan_nodes
