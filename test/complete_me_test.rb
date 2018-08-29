@@ -123,10 +123,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_traverses_a_deleted_word
-<<<<<<< HEAD
-=======
     # skip
->>>>>>> 911cba987879d3db0b9b40f22d29b30b3b87d98c
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -145,10 +142,7 @@ class CompleteMeTest < Minitest::Test
   end
 
   def test_it_deletes_orphan_nodes
-<<<<<<< HEAD
-=======
     # skip
->>>>>>> 911cba987879d3db0b9b40f22d29b30b3b87d98c
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -167,12 +161,8 @@ class CompleteMeTest < Minitest::Test
 
   end
 
-<<<<<<< HEAD
-  def test_it_deletes_a_word
-=======
   def test_it_deletes_a_word_with_child_nodes
     # skip
->>>>>>> 911cba987879d3db0b9b40f22d29b30b3b87d98c
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
     completion.populate(dictionary)
@@ -212,16 +202,16 @@ class CompleteMeTest < Minitest::Test
     addresses = File.read(absolute_path)
     completion.populate(addresses)
 
-    expected = ["12344 E Olmsted Dr",
-      "1234 E 22nd Ave",
-      "1234 E 28th Ave",
-      "1234 E Colfax Ave",
-      "1234 E Colfax Ave Ste 201"]
+    expected = ["1234 E 22nd Ave",
+                "1234 E 27th Ave",
+                "1234 E 28th Ave",
+                "1234 E 33rd Ave",
+                "1234 E Colfax Ave"]
 
     assert_equal expected, completion.suggest("1234")
   end
 
-  def test_that_it_can_suggest_based_on_word_score
+  def test_that_it_can_suggest_addresses_based_on_word_score
     completion = CompleteMe.new
     relative_path = "./data/addresses"
     absolute_path = File.expand_path(relative_path)
@@ -232,15 +222,15 @@ class CompleteMeTest < Minitest::Test
     completion.suggest("1234")
 
     expected = ["1234 E Colfax Ave",
-      "1234 E 22nd Ave",
-      "1234 E 28th Ave",
-      "1234 E Colfax Ave Ste 201",
-      "1234 E Colfax Ave Ste 202"]
+                "1234 E 22nd Ave",
+                "1234 E 27th Ave",
+                "1234 E 28th Ave",
+                "1234 E 33rd Ave"]
 
     assert_equal expected, completion.suggest("1234")
   end
 
-  def test_that_it_can_suggest_based_on_prefix_score_combination
+  def test_that_it_can_suggest_an_address_based_on_prefix_score_combination
     completion = CompleteMe.new
     relative_path = "./data/addresses"
     absolute_path = File.expand_path(relative_path)
@@ -257,17 +247,17 @@ class CompleteMeTest < Minitest::Test
     completion.select("123", "1234 E 28th Ave")
 
     expected = ["1234 E Colfax Ave",
-      "1234 E 22nd Ave",
-      "1234 E 28th Ave",
-      "1234 E Colfax Ave Ste 201",
-      "1234 E Colfax Ave Ste 202"]
+                "1234 E 22nd Ave",
+                "1234 E 27th Ave",
+                "1234 E 28th Ave",
+                "1234 E 33rd Ave"]
     assert_equal expected, completion.suggest('1234')
 
     expected = ["1234 E 22nd Ave",
-      "1234 E 28th Ave",
-      "12300 E 55th Ave",
-      "12300 E 39th Ave",
-      "12300 E 48th Ave"]
+                "1234 E 28th Ave",
+                "123 E 2nd Ave",
+                "123 E 3rd Ave",
+                "123 E 3rd Ave Apt 1"]
     assert_equal expected, completion.suggest('123')
   end
 
@@ -278,7 +268,7 @@ class CompleteMeTest < Minitest::Test
     addresses = File.read(absolute_path)
     completion.populate(addresses)
 
-    expected = ["1234 E 27th Ave", "1234 E 22nd Ave", "1234 E 28th Ave"]
+    expected = ["1234 E 22nd Ave", "1234 E 27th Ave", "1234 E 28th Ave"]
     assert_equal expected, completion.suggest('1234 E 2')
 
     completion.delete_word('1234 E 22nd Ave')
@@ -344,5 +334,4 @@ class CompleteMeTest < Minitest::Test
     # need to replicate server error
 
   end
-
 end
