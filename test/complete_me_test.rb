@@ -342,11 +342,5 @@ class CompleteMeTest < Minitest::Test
     url = "https://od-api.oxforddictionaries.com:443/api/wtf/"
     response = completion.get_fetch(word, keys, url, conn)
 
-    expected = "Something went wrong (status: 500)"
-    actual = completion.evaluate_fetch_response(word, response)
-    # assert_equal expected, actual
-
-    # need to replicate server error
-
   end
 end

@@ -110,14 +110,14 @@ class CompleteMe
   def select(prefix, selection)
     selection_array = selection.split('')
     final_node = traverse(selection_array, @root)
-    if final_node.complete_word
-      if final_node.word_score.keys.include?(prefix)
-        final_node.word_score[prefix] += 1
-      else
-        final_node.word_score[prefix] = 1
-      end
+    increment_word_score(prefix, final_node)
+  end
+
+  def increment_word_score(prefix, final_node)
+    if final_node.complete_word && final_node.word_score.keys.include?(prefix)
+      final_node.word_score[prefix] += 1
     else
-      puts "selection is not a word"
+      final_node.word_score[prefix] = 1
     end
   end
 
