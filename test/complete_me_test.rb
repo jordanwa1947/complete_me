@@ -128,6 +128,14 @@ class CompleteMeTest < Minitest::Test
     assert_equal expected, completion.suggest('pi')
   end
 
+  def test_it_knows_when_no_suggestions_to_be_made
+    completion = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    completion.populate(dictionary)
+    assert_equal ["No suggestions."], completion.suggest("asdf")
+
+  end
+
   def test_it_returns_a_node_as_not_a_complete_word
     completion = CompleteMe.new
     dictionary = "try\ntrying\ntryout"
