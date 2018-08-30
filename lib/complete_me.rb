@@ -143,10 +143,8 @@ class CompleteMe
     if response.status == 200
       result = JSON.parse(response.body)
       result["results"][0]["lexicalEntries"][0]["entries"][0]["senses"][0]["definitions"][0]
-    elsif response.status == 404
-      "No definition found for #{word} (status: 404)"
     else
-      "Something went wrong (status: #{response.status}"
+      "No definition found for #{word} (status: 404)"
     end
   end
 
