@@ -29,7 +29,26 @@ class CompleteMeTest < Minitest::Test
     completion = CompleteMe.new
     completion.insert("s")
 
-    assert_equal "s", completion.root.children["s"].value
+    assert_equal "s", completion.root.children["s"].character
+  end
+
+  def test_it_checks_for_existing_child
+    completion = CompleteMe.new
+    completion.insert('s')
+    expected = completion.root.children["s"]
+    actual = completion.check_for_existing_child_node(['s'], completion.root)
+
+    assert_equal expected, actual
+  end
+
+  def test_it_can_mature_a_child_node 
+    completion = CompleteMe.new
+    completion.insert('as')
+    a_node = completion.root.children['a']
+    s_node = a_node.children['s']
+
+    assert_equal ['s'], a_node.children.keys
+    assert s_node.complete_word
   end
 
   def test_it_can_add_a_single_word
@@ -42,11 +61,11 @@ class CompleteMeTest < Minitest::Test
     z_two_node = z_node.children["z"]
     a_node = z_two_node.children["a"]
 
-    assert_equal "p", p_node.value
-    assert_equal "i", i_node.value
-    assert_equal "z", z_node.value
-    assert_equal "z", z_two_node.value
-    assert_equal "a", a_node.value
+    assert_equal "p", p_node.character
+    assert_equal "i", i_node.character
+    assert_equal "z", z_node.character
+    assert_equal "z", z_two_node.character
+    assert_equal "a", a_node.character
     assert a_node.complete_word
   end
 
@@ -322,12 +341,6 @@ class CompleteMeTest < Minitest::Test
 
     url = "https://od-api.oxforddictionaries.com:443/api/wtf/"
     response = completion.get_fetch(word, keys, url, conn)
-
-    expected = "Something went wrong (status: 500)"
-    actual = completion.evaluate_fetch_response(word, response)
-    # assert_equal expected, actual
-
-    # need to replicate server error
 
   end
 end
